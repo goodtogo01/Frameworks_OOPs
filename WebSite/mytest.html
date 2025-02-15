@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zSolution</title>
+<style>
+        /* Modern and Dynamic Theme */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            background: linear-gradient(to bottom, #e6f7ff, #ffffff);
+            color: #333;
+        }
+        /* Sidebar Styling */
+        .sidebar {
+            width: 220px;
+            background: linear-gradient(145deg, #34495e, #2c3e50);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: #1abc9c;
+        }
+        .sidebar button {
+            margin: 8px 0;
+            padding: 8px;
+            width: 100%;
+            background-color: #1abc9c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+        .sidebar button:hover {
+            background-color: #16a085;
+        }
+        /* Content Area */
+        .content {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        .content h3 {
+            color: #34495e;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .content p {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .form-section {
+            margin: 10px 0;
+        }
+        .form-section label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+        /* Reduced size for TextBox, Button */
+        .form-section input,
+        .form-section select,
+        .form-section textarea,
+        .form-section button {
+            padding: 5px 8px;
+            margin-bottom: 8px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            width: 90%; /* Reduced width */
+            font-size: 12px; /* Reduced font size */
+            transition: border-color 0.3s;
+        }
+        .form-section input:focus,
+        .form-section select:focus,
+        .form-section textarea:focus {
+            border-color: #1abc9c;
+            outline: none;
+        }
+        .form-section input[type="radio"],
+        .form-section input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+            margin-top: 3px;
+        }
+        /* Smaller Submit Button */
+        .form-section button {
+            background-color: #1abc9c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 12px; /* Reduced font size for button */
+            padding: 5px 8px;
+            transition: background 0.3s;
+        }
+        .form-section button:hover {
+            background-color: #16a085;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background-color: #ecf0f1;
+        }
+        table th, table td {
+            border: 1px solid #bdc3c7;
+            padding: 6px;
+            text-align: center;
+            font-size: 13px;
+        }
+        table th {
+            background-color: #1abc9c;
+            color: white;
+        }
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: 1px solid #bdc3c7;
+            margin-top: 15px;
+        }
+    </style></head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>zSolution</h2>
+        <button onclick="showTab('text-box')">Text Box</button>
+        <button onclick="showTab('radio-button')">Radio Button</button>
+        <button onclick="showTab('checkbox')">Check Box</button>
+        <button onclick="showTab('dropdown')">Drop Down</button>
+        <button onclick="showTab('alerts-popups')">Alerts & Popups</button>
+        <button onclick="showTab('broken-links')">Broken Links</button>
+        <button onclick="showTab('iframe')">iFrame</button>
+        <button onclick="showTab('web-table')">Web Table</button>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+ <!-- Text Box -->
+<div id="text-box" class="tab-content">
+    <h3>Text Box</h3>
+    <p>Fill in your details below:</p>
+    <div class="form-section">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email">
+        <label for="address">Address:</label>
+        <textarea id="address" rows="3" placeholder="Enter your address"></textarea>
+        <button class="btn-primary" onclick="showResult()">Submit</button>
+    </div>
+    <div id="result" style="margin-top: 20px; padding: 10px; background-color: #ecf0f1; border-radius: 4px; display: none;">
+        <h4>Submitted Details:</h4>
+        <p><strong>Name:</strong> <span id="result-name"></span></p>
+        <p><strong>Email:</strong> <span id="result-email"></span></p>
+        <p><strong>Address:</strong> <span id="result-address"></span></p>
+    </div>
+</div>
+
+<script>
+    // Show the result on the page
+    function showResult() {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const address = document.getElementById('address').value;
+
+        // Update the result section
+        document.getElementById('result-name').textContent = name;
+        document.getElementById('result-email').textContent = email;
+        document.getElementById('result-address').textContent = address;
+
+        // Display the result section
+        document.getElementById('result').style.display = 'block';
+    }
+</script>
+
+        <!-- Radio Button -->
+        <div id="radio-button" class="tab-content">
+            <h3>Radio Button</h3>
+            <p>Choose your preferences:</p>
+            <div class="form-section">
+                <label>Select your gender:</label>
+                <input type="radio" name="gender" value="Male"> Male
+                <input type="radio" name="gender" value="Female"> Female
+                <input type="radio" name="gender" value="Other"> Other
+                <label>Select your age group:</label>
+                <input type="radio" name="age" value="18-25"> 18-25
+                <input type="radio" name="age" value="26-35"> 26-35
+                <input type="radio" name="age" value="36+"> 36+
+            </div>
+        </div>
+
+        <!-- Check Box -->
+        <div id="checkbox" class="tab-content">
+            <h3>Check Box</h3>
+            <p>Pick your interests:</p>
+            <div class="form-section">
+                <label>Select your hobbies:</label>
+                <input type="checkbox" name="hobby" value="Reading"> Reading
+                <input type="checkbox" name="hobby" value="Traveling"> Traveling
+                <input type="checkbox" name="hobby" value="Gaming"> Gaming
+                <input type="checkbox" name="hobby" value="Cooking"> Cooking
+                <label>Subscribe to:</label>
+                <input type="checkbox" name="subscribe" value="Newsletter"> Newsletter
+                <input type="checkbox" name="subscribe" value="Promotions"> Promotions
+            </div>
+        </div>
+
+        <!-- Drop Down -->
+        <div id="dropdown" class="tab-content">
+            <h3>Drop Down</h3>
+            <p>Make a selection:</p>
+            <div class="form-section">
+                <label for="country">Select a country:</label>
+                <select id="country">
+                    <option value="USA">USA</option>
+                    <option value="India">India</option>
+                    <option value="UK">UK</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Germany">Germany</option>
+                </select>
+                <label for="city">Select a city:</label>
+                <select id="city">
+                    <option value="New York">New York</option>
+                    <option value="London">London</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Toronto">Toronto</option>
+                    <option value="Berlin">Berlin</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Alerts & Popups -->
+        <div id="alerts-popups" class="tab-content">
+            <h3>Alerts & Popups</h3>
+            <p>Trigger various alerts and popups:</p>
+            <button class="btn-primary" onclick="alert('This is a simple alert!')">Show Alert</button>
+            <button class="btn-primary" onclick="confirm('Are you sure you want to proceed?')">Show Confirmation</button>
+            <button class="btn-primary" onclick="let name = prompt('Enter your name:', ''); alert('Hello, ' + name)">Prompt Alert</button>
+        </div>
+
+        <!-- Broken Links -->
+        <div id="broken-links" class="tab-content">
+            <h3>Broken Links</h3>
+            <p>Test broken links below:</p>
+            <a href="https://www.nonexistentwebsite.com" target="_blank">Broken Link 1</a>
+            <br>
+            <a href="https://www.invalidlink.com" target="_blank">Broken Link 2</a>
+        </div>
+
+        <!-- iFrame -->
+        <div id="iframe" class="tab-content">
+            <h3>iFrame</h3>
+            <p>Embedded content:</p>
+            <iframe src="https://www.example.com"></iframe>
+        </div>
+
+        <!-- Web Table -->
+        <div id="web-table" class="tab-content">
+            <h3>Web Table</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>Developer</td>
+                        <td>USA</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Maria Lopez</td>
+                        <td>Designer</td>
+                        <td>Canada</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Akira Tanaka</td>
+                        <td>Manager</td>
+                        <td>Japan</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Fatima Ahmed</td>
+                        <td>QA Engineer</td>
+                        <td>UAE</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Liam Smith</td>
+                        <td>Team Lead</td>
+                        <td>UK</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Chen Wei</td>
+                        <td>Data Analyst</td>
+                        <td>China</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Priya Kapoor</td>
+                        <td>Project Manager</td>
+                        <td>India</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Daniel Martinez</td>
+                        <td>Software Architect</td>
+                        <td>Mexico</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Anna Ivanova</td>
+                        <td>HR Specialist</td>
+                        <td>Russia</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>William Brown</td>
+                        <td>System Administrator</td>
+                        <td>Australia</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Grace Johnson</td>
+                        <td>Cloud Engineer</td>
+                        <td>USA</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Ahmed Khan</td>
+                        <td>DevOps Engineer</td>
+                        <td>Pakistan</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Show selected tab
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>

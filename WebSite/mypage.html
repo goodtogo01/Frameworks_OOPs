@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZSolution Register</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #45a049, #4CAF50);
+            transform: scale(1.05);
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .success {
+            color: green;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ZSolution Register</h2>
+        <div id="register-form">
+            <div class="form-group">
+                <label for="reg-username">Username</label>
+                <input type="text" id="reg-username" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="reg-email">Email</label>
+                <input type="email" id="reg-email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="reg-password">Password</label>
+                <input type="password" id="reg-password" placeholder="Enter your password">
+            </div>
+            <div class="form-group">
+                <label for="reg-confirm-password">Confirm Password</label>
+                <input type="password" id="reg-confirm-password" placeholder="Confirm your password">
+            </div>
+            <button class="btn" onclick="handleRegister()">Register</button>
+            <p id="message" class="error"></p>
+        </div>
+    </div>
+
+    <!-- Popup Window -->
+    <div id="popup" class="popup">
+        <p>Registration successful! Welcome to ZSolution.</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+
+    <script>
+        function handleRegister() {
+            const username = document.getElementById("reg-username").value;
+            const email = document.getElementById("reg-email").value;
+            const password = document.getElementById("reg-password").value;
+            const confirmPassword = document.getElementById("reg-confirm-password").value;
+            const message = document.getElementById("message");
+            const popup = document.getElementById("popup");
+
+            if (!username || !email || !password || !confirmPassword) {
+                message.textContent = "All fields are required.";
+                message.className = "error";
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                message.textContent = "Passwords do not match.";
+                message.className = "error";
+                return;
+            }
+
+            // Show success message and popup
+            message.textContent = "Registration successful!";
+            message.className = "success";
+            popup.style.display = "block";
+
+            // Clear the form
+            document.getElementById("reg-username").value = "";
+            document.getElementById("reg-email").value = "";
+            document.getElementById("reg-password").value = "";
+            document.getElementById("reg-confirm-password").value = "";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+</body>
+</html>
